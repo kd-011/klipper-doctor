@@ -374,6 +374,2969 @@
       },
       "pinnedAt": "2026-11-03T07:34:33.762Z",
       "head": "c6944e235163560a7857d35825150dc99a510fc0"
+    },
+    "klipper-doctor-agents": {
+      "claims": {
+        "30b0ef13cc17": {
+          "text": "Needs Node 18 or newer. `npm ci` installs the two dev dependencies (TypeScript and `@types/node`). There are no runtime dependencies.",
+          "line": 15,
+          "specs": [
+            "package.json#engines.node",
+            "package.json#devDependencies"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#engines.node": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "engines.node",
+                "hash": "8b1eef9db8111943994ac9ef00463b0def9526f3",
+                "value": "\">=18\""
+              }
+            },
+            "package.json#devDependencies": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "devDependencies",
+                "hash": "20bcee17bad1c1cfda0f25903a455dbc97a483b2",
+                "value": "{\"@types/node\":\"^26.6.5\",\"typescript\":\"^7.0.2\"}"
+              }
+            }
+          }
+        },
+        "34e64807a0bf": {
+          "text": "`npm run build` compiles `src/` to `dist/` with `tsc` and marks `dist/cli.js` executable.",
+          "line": 16,
+          "specs": [
+            "package.json#scripts.build"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#scripts.build": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "scripts.build",
+                "hash": "bf85f736b4d0ce1dd1c6904485e9eea36d2b8267",
+                "value": "\"tsc -p tsconfig.json && node -e \\\"require('fs').chmodSync('dist/cli.js', 0o755)\\\"\""
+              }
+            }
+          }
+        },
+        "8317d060c9fb": {
+          "text": "`npm test` builds first (`pretest`), then runs Node's built-in runner over `test/*.test.mjs`. One file: `npm run build && node --test test/crash.test.mjs`.",
+          "line": 17,
+          "specs": [
+            "package.json#scripts.pretest",
+            "package.json#scripts.test"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#scripts.pretest": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "scripts.pretest",
+                "hash": "03f011861f607ce54ae32d12e830cb5bc7dcbef8",
+                "value": "\"npm run build\""
+              }
+            },
+            "package.json#scripts.test": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "scripts.test",
+                "hash": "718d1ec627682e885f999d73ced06047bf3f48b3",
+                "value": "\"node --test test/*.test.mjs\""
+              }
+            }
+          }
+        },
+        "3ef741a5076f": {
+          "text": "`npm run check` typechecks both tsconfigs with no emit. The second one (`tsconfig.core.json`) has no Node types, so `src/core` cannot use Node APIs.",
+          "line": 18,
+          "specs": [
+            "package.json#scripts.check",
+            "tsconfig.core.json"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#scripts.check": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "scripts.check",
+                "hash": "a7dd7c39c3ab6acdcf06f769fe4faf6034a4786c",
+                "value": "\"tsc -p tsconfig.json --noEmit && tsc -p tsconfig.core.json --noEmit\""
+              }
+            },
+            "tsconfig.core.json": {
+              "path": "tsconfig.core.json",
+              "blob": "4c66cad4560463be7e44c6ab63db7966f6e6b059",
+              "commit": "29aad7abea4a130ef1bba98d2941939bbafa55cb"
+            }
+          }
+        },
+        "d5f3c8f8ed8e": {
+          "text": "No linter or formatter is configured.",
+          "line": 19,
+          "specs": [
+            "package.json#scripts"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#scripts": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "scripts",
+                "hash": "435f491ef1703cb427d60b94deb7f612f2ef13df",
+                "value": "{\"assets\":\"node scripts/render-assets.mjs\",\"bench\":\"node scripts/bench.mjs\",\"build\":\"tsc -p tsconfig.json && node -e ..."
+              }
+            }
+          }
+        },
+        "f481e8543f87": {
+          "text": "Run the CLI from source after a build: `node dist/cli.js test/fixtures/demo.log`.",
+          "line": 20,
+          "specs": [
+            "package.json#bin",
+            "README.md"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#bin": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "bin",
+                "hash": "f1a963c331abe16f646ff5e44c0715e15b12140b",
+                "value": "{\"klipper-doctor\":\"dist/cli.js\"}"
+              }
+            },
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            }
+          }
+        },
+        "21e9051f464a": {
+          "text": "`npm run docs` rewrites the rule table in `docs/rules.md` from the rules' own metadata, and `node scripts/gen-rules-table.mjs --check` fails when it is stale...",
+          "line": 21,
+          "specs": [
+            "scripts/gen-rules-table.mjs",
+            "package.json#scripts.docs"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/gen-rules-table.mjs": {
+              "path": "scripts/gen-rules-table.mjs",
+              "blob": "97c55d17c97030376b571edeaf27efd4a0202700",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            },
+            "package.json#scripts.docs": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "scripts.docs",
+                "hash": "1511bc530e1df78c3be858ae892e728ca7692031",
+                "value": "\"node scripts/gen-rules-table.mjs\""
+              }
+            }
+          }
+        },
+        "7a9b3050c17e": {
+          "text": "`npm run fixtures` rebuilds `test/fixtures/*.log` from `scripts/make-fixtures.mjs`.",
+          "line": 22,
+          "specs": [
+            "package.json#scripts.fixtures",
+            "scripts/make-fixtures.mjs:1-5"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#scripts.fixtures": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "scripts.fixtures",
+                "hash": "34be6ff257aa2f3c2f2b7bb5bdfc671b780f64aa",
+                "value": "\"node scripts/make-fixtures.mjs\""
+              }
+            },
+            "scripts/make-fixtures.mjs": {
+              "path": "scripts/make-fixtures.mjs",
+              "blob": "3bd896921dab5ab69b8bb41ed4369aa13efaa7c2",
+              "commit": "c6944e235163560a7857d35825150dc99a510fc0",
+              "range": {
+                "start": 1,
+                "end": 5,
+                "hash": "428fb0f7c181a5b7138b354ba90b400f02450d65"
+              }
+            }
+          }
+        },
+        "2ab2fb04b46f": {
+          "text": "`npm run check-samples -- <klipper checkout>` lints every sample config in a Klipper checkout and counts errors, which would be false positives. It is not pa...",
+          "line": 23,
+          "specs": [
+            "scripts/check-samples.mjs:1-8"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/check-samples.mjs": {
+              "path": "scripts/check-samples.mjs",
+              "blob": "22fb31dfc82f2ef5e3d1f5116db2ead69b8caecd",
+              "commit": "2e1c526413d9ce1032ead555d8b79d7c198d404b",
+              "range": {
+                "start": 1,
+                "end": 8,
+                "hash": "aa8635c868b906c747f219647f5b2352012fea60"
+              }
+            }
+          }
+        },
+        "60a3051c35e7": {
+          "text": "`npm run bench` times `analyze()` and peak memory on generated logs.",
+          "line": 24,
+          "specs": [
+            "scripts/bench.mjs:1-4"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/bench.mjs": {
+              "path": "scripts/bench.mjs",
+              "blob": "dff73624a21cdbdea230f5a93edb0e89d009ef17",
+              "commit": "2e1c526413d9ce1032ead555d8b79d7c198d404b",
+              "range": {
+                "start": 1,
+                "end": 4,
+                "hash": "644cb2a0e7d999789ffdb110c1e155099ad887b0"
+              }
+            }
+          }
+        },
+        "1c5d6a5a6671": {
+          "text": "`npm run assets` redraws `assets/*.png` from the engine's output and needs a headless Chromium (`CHROME_BIN`).",
+          "line": 25,
+          "specs": [
+            "scripts/render-assets.mjs:1-8"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/render-assets.mjs": {
+              "path": "scripts/render-assets.mjs",
+              "blob": "c3abc363ba82cdabb69079f6a24e9b24fac6996c",
+              "commit": "78f8bce21ef210fdc3ce2600802d7a987d24d56d",
+              "range": {
+                "start": 1,
+                "end": 8,
+                "hash": "fc6ceaa9f28a06f3b106978e735b258052cca331"
+              }
+            }
+          }
+        },
+        "789686de5d73": {
+          "text": "`node scripts/gen-command-errors.mjs <klipper checkout>` regenerates `src/core/rules/crash/commandErrorTable.ts`.",
+          "line": 26,
+          "specs": [
+            "scripts/gen-command-errors.mjs:1-3"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/gen-command-errors.mjs": {
+              "path": "scripts/gen-command-errors.mjs",
+              "blob": "3f47ba6f8013e4f06707caacfc37e30596a579e9",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 1,
+                "end": 3,
+                "hash": "3b17a19d942842ea71eb8a6bc9c531657c537859"
+              }
+            }
+          }
+        },
+        "777944961eb9": {
+          "text": "`node scripts/release.mjs plan --version 0.3.0 --published 0.2.0 --release-exists false` is a dry run of the release decision.",
+          "line": 27,
+          "specs": [
+            "scripts/release.mjs:1-10",
+            "CONTRIBUTING.md"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/release.mjs": {
+              "path": "scripts/release.mjs",
+              "blob": "4c1083d672adf28d7110c5968e10983de739db47",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 1,
+                "end": 10,
+                "hash": "6a12ff7e99cc0e99a6d7391dd0b5d698ed82e01c"
+              }
+            },
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            }
+          }
+        },
+        "cb30da9c9d68": {
+          "text": "`src/core/` takes text and returns a report, with no Node APIs. Only `src/cli.ts` reads files, stdin or the network.",
+          "line": 31,
+          "specs": [
+            "CONTRIBUTING.md",
+            "tsconfig.core.json",
+            "src/core/index.ts:386-398"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            },
+            "tsconfig.core.json": {
+              "path": "tsconfig.core.json",
+              "blob": "4c66cad4560463be7e44c6ab63db7966f6e6b059",
+              "commit": "29aad7abea4a130ef1bba98d2941939bbafa55cb"
+            },
+            "src/core/index.ts": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 386,
+                "end": 398,
+                "hash": "fe06f1f560c83ecc6d59d12bfdc0c053ec43b5ed"
+              }
+            }
+          }
+        },
+        "46bd4a3082c2": {
+          "text": "No runtime dependencies.",
+          "line": 32,
+          "specs": [
+            "CONTRIBUTING.md",
+            "package.json#devDependencies"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            },
+            "package.json#devDependencies": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "devDependencies",
+                "hash": "20bcee17bad1c1cfda0f25903a455dbc97a483b2",
+                "value": "{\"@types/node\":\"^26.6.5\",\"typescript\":\"^7.0.2\"}"
+              }
+            }
+          }
+        },
+        "a5c22f03b865": {
+          "text": "A crash rule goes in `src/core/rules/crash/<subsystem>.ts` and a config rule in `src/core/rules/config/`. Each is listed in that folder's `index.ts`, and the...",
+          "line": 33,
+          "specs": [
+            "src/core/rules/crash/index.ts:27-60",
+            "src/core/rules/config/index.ts:17-35"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/rules/crash/index.ts": {
+              "path": "src/core/rules/crash/index.ts",
+              "blob": "760f49b647d6b4c25e6f5653ac5aef1c0cfb4abc",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 27,
+                "end": 60,
+                "hash": "6c92134c36899ed186c4e716e70930a400996b47"
+              }
+            },
+            "src/core/rules/config/index.ts": {
+              "path": "src/core/rules/config/index.ts",
+              "blob": "90ad30cbd8c5fb23662ef6b8bf8e8878c1c16f67",
+              "commit": "41caf8fdc9d906ae5c86d62b858f2145cb3105aa",
+              "range": {
+                "start": 17,
+                "end": 35,
+                "hash": "17fb1ae123d3132cfd59feaa11fa49cfd0b709a7"
+              }
+            }
+          }
+        },
+        "e4e584a3f0a9": {
+          "text": "Every rule has an id, severity, title, detail, fix and a `docs` link to the Klipper docs page or source file it comes from. No source, no rule, and no invent...",
+          "line": 34,
+          "specs": [
+            "src/core/types.ts:65-74",
+            "CONTRIBUTING.md"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/types.ts": {
+              "path": "src/core/types.ts",
+              "blob": "123004711378fda97f696637c94669262b3e1b36",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 65,
+                "end": 74,
+                "hash": "a650ddeb5bc0d3a65bb7ed78ef1ef0d56e3b3981"
+              }
+            },
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            }
+          }
+        },
+        "d3489d10e182": {
+          "text": "A crash rule reads `ctx.cause`, `ctx.match`, `ctx.find` or `ctx.findAll`, which see only the lines before the first shutdown plus the reason Klipper gave.",
+          "line": 35,
+          "specs": [
+            "src/core/cause.ts:51-70",
+            "src/core/index.ts:102-149"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/cause.ts": {
+              "path": "src/core/cause.ts",
+              "blob": "6d56972e4b6c068b0f4cc781462202ef49b9aa07",
+              "commit": "2e1c526413d9ce1032ead555d8b79d7c198d404b",
+              "range": {
+                "start": 51,
+                "end": 70,
+                "hash": "40cc74ab4566d97a1e1d85096b8167403f5cf28b"
+              }
+            },
+            "src/core/index.ts": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 102,
+                "end": 149,
+                "hash": "9065789fb15bbde3ecd654c08e783072d469a76c"
+              }
+            }
+          }
+        },
+        "7d72e753fcba": {
+          "text": "Finding text is plain English: what happened, the likely cause, the fix. No em dashes, no marketing words.",
+          "line": 36,
+          "specs": [
+            "CONTRIBUTING.md"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            }
+          }
+        },
+        "1894aaaa8be9": {
+          "text": "Test fixtures are hand-built from the message formats in the Klipper source. Never use a real person's log.",
+          "line": 37,
+          "specs": [
+            "CONTRIBUTING.md",
+            "scripts/make-fixtures.mjs:1-5"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            },
+            "scripts/make-fixtures.mjs": {
+              "path": "scripts/make-fixtures.mjs",
+              "blob": "3bd896921dab5ab69b8bb41ed4369aa13efaa7c2",
+              "commit": "c6944e235163560a7857d35825150dc99a510fc0",
+              "range": {
+                "start": 1,
+                "end": 5,
+                "hash": "428fb0f7c181a5b7138b354ba90b400f02450d65"
+              }
+            }
+          }
+        },
+        "4b04c48d5c0e": {
+          "text": "A new rule needs a fixture in `scripts/make-fixtures.mjs`, an expectation in `test/crash.test.mjs` or `test/config.test.mjs`, a refreshed `docs/rules.md`, an...",
+          "line": 38,
+          "specs": [
+            "CONTRIBUTING.md"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            }
+          }
+        },
+        "66cd08a5b72d": {
+          "text": "The command line is described once in `src/options.ts`, and `--help` and the shell completions are both generated from it.",
+          "line": 39,
+          "specs": [
+            "src/options.ts:1-2",
+            "src/completions.ts"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/options.ts": {
+              "path": "src/options.ts",
+              "blob": "00984ea6f3edc105a3dee0dddde0001f85d8fada",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 1,
+                "end": 2,
+                "hash": "1a06174d32946df47a55c8a1179195f08c423913"
+              }
+            },
+            "src/completions.ts": {
+              "path": "src/completions.ts",
+              "blob": "15346b54613aa3a2b928cd47432e54ce40a55004",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8"
+            }
+          }
+        },
+        "1fd49e15e290": {
+          "text": "`dist/` is committed. Commit the rebuilt files with any `src/` change.",
+          "line": 40,
+          "specs": [
+            "CONTRIBUTING.md",
+            ".github/PULL_REQUEST_TEMPLATE.md"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            },
+            ".github/PULL_REQUEST_TEMPLATE.md": {
+              "path": ".github/PULL_REQUEST_TEMPLATE.md",
+              "blob": "179854a78dbe51b90118e44b3fdbe39a8897e6ff",
+              "commit": "613159f772ab8fbdf562d24153713fbd08d6eea3"
+            }
+          }
+        },
+        "bfb1941baf12": {
+          "text": "A release is a pull request that raises the version: move the Unreleased notes in `CHANGELOG.md` under a `## [x.y.z] - date` heading, run `npm version <bump>...",
+          "line": 41,
+          "specs": [
+            "CONTRIBUTING.md",
+            ".github/workflows/publish.yml:1-12"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            },
+            ".github/workflows/publish.yml": {
+              "path": ".github/workflows/publish.yml",
+              "blob": "a93826b8902c539c81997e0e7c1877665cd9aee2",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 1,
+                "end": 12,
+                "hash": "de901954f9d1b05f3c50bc3c7c2ae08c90c2cc21"
+              }
+            }
+          }
+        },
+        "d305cd70c52a": {
+          "text": "CI fails when a rebuild changes `dist/`. Build with the TypeScript in `package-lock.json` (`npm ci`), not a global or stale one.",
+          "line": 45,
+          "specs": [
+            ".github/workflows/ci.yml:38-39",
+            "package.json#devDependencies.typescript"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            ".github/workflows/ci.yml": {
+              "path": ".github/workflows/ci.yml",
+              "blob": "769a01fbf0b6e104be4a0c53868d4af1db95c7cc",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 38,
+                "end": 39,
+                "hash": "d1cde00ce43b592b85df10703490cbec48365b8a"
+              }
+            },
+            "package.json#devDependencies.typescript": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "devDependencies.typescript",
+                "hash": "e4b574bb7f537569a72934a237f319ae4aeb1b9f",
+                "value": "\"^7.0.2\""
+              }
+            }
+          }
+        },
+        "8b0c03adf866": {
+          "text": "`npm test` runs the build first, so running it can change tracked files under `dist/`.",
+          "line": 46,
+          "specs": [
+            "package.json#scripts.pretest"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#scripts.pretest": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "scripts.pretest",
+                "hash": "03f011861f607ce54ae32d12e830cb5bc7dcbef8",
+                "value": "\"npm run build\""
+              }
+            }
+          }
+        },
+        "be221f361634": {
+          "text": "The table in `docs/rules.md` between the `rules:start` and `rules:end` markers is generated. A hand edit is overwritten, and a stale table fails CI and `test...",
+          "line": 47,
+          "specs": [
+            "scripts/gen-rules-table.mjs:12-17",
+            "test/report.test.mjs:67-72",
+            ".github/workflows/ci.yml:40-41"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/gen-rules-table.mjs": {
+              "path": "scripts/gen-rules-table.mjs",
+              "blob": "97c55d17c97030376b571edeaf27efd4a0202700",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 12,
+                "end": 17,
+                "hash": "6feedb48c55409607fb3b186ed0a8d4a1bbdd209"
+              }
+            },
+            "test/report.test.mjs": {
+              "path": "test/report.test.mjs",
+              "blob": "797db12d8dca56bde550234b47ca815097f5619f",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 67,
+                "end": 72,
+                "hash": "e94d9f77eb247b2a18a3e122250edc192440f6bd"
+              }
+            },
+            ".github/workflows/ci.yml": {
+              "path": ".github/workflows/ci.yml",
+              "blob": "769a01fbf0b6e104be4a0c53868d4af1db95c7cc",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 40,
+                "end": 41,
+                "hash": "f0cddb7701d8f1d2eb4429c7bcb356b7d955cf8f"
+              }
+            }
+          }
+        },
+        "5565de3201fa": {
+          "text": "`src/core/rules/crash/commandErrorTable.ts` and `src/core/version.ts` are generated or written by scripts. Do not edit them by hand.",
+          "line": 48,
+          "specs": [
+            "src/core/rules/crash/commandErrorTable.ts:1",
+            "scripts/sync-version.mjs:1-2"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/rules/crash/commandErrorTable.ts": {
+              "path": "src/core/rules/crash/commandErrorTable.ts",
+              "blob": "7b02e7969275c31d49dc815b1b654f0a0dc6df90",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 1,
+                "end": 1,
+                "hash": "bee1ffca00ea9ccb178a914fde2631c6a71b28ef"
+              }
+            },
+            "scripts/sync-version.mjs": {
+              "path": "scripts/sync-version.mjs",
+              "blob": "4eea69bdb3160bb78981a187bf65008ad7f89703",
+              "commit": "78f8bce21ef210fdc3ce2600802d7a987d24d56d",
+              "range": {
+                "start": 1,
+                "end": 2,
+                "hash": "510c6443dbb9ea5743b1f6352e097f2a58abec68"
+              }
+            }
+          }
+        },
+        "b47f9cfc0d1a": {
+          "text": "Changing a rule's title, detail or fix wording fails `test/readme.test.mjs` until the quoted copy in `docs/examples.md` (and in `README.md` for `mcu-timer-to...",
+          "line": 49,
+          "specs": [
+            "test/readme.test.mjs:8-40"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "test/readme.test.mjs": {
+              "path": "test/readme.test.mjs",
+              "blob": "04a31cf33a50f4551d6bfeb4c6dfa1b2af7542ba",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 8,
+                "end": 40,
+                "hash": "5bede2cdcdab73fb0ed33ed97de5f4836b7c9b25"
+              }
+            }
+          }
+        },
+        "2dcc5bcefda8": {
+          "text": "A merge to `main` that changes `package.json` runs the publish workflow. It publishes only when the version is new on npm, so a dependency bump publishes not...",
+          "line": 50,
+          "specs": [
+            ".github/workflows/publish.yml:20-24",
+            "CONTRIBUTING.md"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            ".github/workflows/publish.yml": {
+              "path": ".github/workflows/publish.yml",
+              "blob": "a93826b8902c539c81997e0e7c1877665cd9aee2",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 20,
+                "end": 24,
+                "hash": "f3ebe1233fd386d17af892963aaa4b405ee15479"
+              }
+            },
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            }
+          }
+        },
+        "1ba195300f0a": {
+          "text": "`test/kit.test.mjs` pins the maintenance kit: third-party actions pinned by full SHA, top-level `permissions` in every workflow, no workflow expanding PR or ...",
+          "line": 51,
+          "specs": [
+            "test/kit.test.mjs:36-60",
+            "test/kit.test.mjs:138-151"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "test/kit.test.mjs": {
+              "path": "test/kit.test.mjs",
+              "blob": "b9349179b78f16d4f1bc4d5039f04f87154a3da7",
+              "commit": "c6944e235163560a7857d35825150dc99a510fc0",
+              "range": {
+                "start": 36,
+                "end": 60,
+                "hash": "be3395c426eb6473265c9992aee36eb027955899"
+              }
+            },
+            "test/kit.test.mjs:138-151": {
+              "path": "test/kit.test.mjs",
+              "blob": "b9349179b78f16d4f1bc4d5039f04f87154a3da7",
+              "commit": "c6944e235163560a7857d35825150dc99a510fc0",
+              "range": {
+                "start": 138,
+                "end": 151,
+                "hash": "c34a8ce4ac661877b6515f81697f06998d5fd9ee"
+              }
+            }
+          }
+        },
+        "b7d2965c79d8": {
+          "text": "`dossiers/klipper-doctor.md` is read by the same test: 5 to 15 claims, each citing a real file and a line range inside it. Editing a cited file can move thos...",
+          "line": 52,
+          "specs": [
+            "test/kit.test.mjs:160-186",
+            "dossiers/klipper-doctor.md"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "test/kit.test.mjs": {
+              "path": "test/kit.test.mjs",
+              "blob": "b9349179b78f16d4f1bc4d5039f04f87154a3da7",
+              "commit": "c6944e235163560a7857d35825150dc99a510fc0",
+              "range": {
+                "start": 160,
+                "end": 186,
+                "hash": "9b2856792e4aebb4d27789b299fc7e3b05f932b3"
+              }
+            },
+            "dossiers/klipper-doctor.md": {
+              "path": "dossiers/klipper-doctor.md",
+              "blob": "98a6813b2694b38322578f137567efac2a0e888c",
+              "commit": "fb758babf2e0d372eaafc4537dda6345276f619d"
+            }
+          }
+        },
+        "d4395753aa16": {
+          "text": "`--ignore` and `# klipper-doctor: ignore` hide config findings only. Crash findings and `unusable-input` are never hidden, and `--ignore` with an unknown or ...",
+          "line": 53,
+          "specs": [
+            "src/core/suppress.ts:3-5",
+            "src/cli.ts:95-102"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/suppress.ts": {
+              "path": "src/core/suppress.ts",
+              "blob": "63ba6c467ceaca0306db88e6df5e8149d7731f5f",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 3,
+                "end": 5,
+                "hash": "f00fc61115809e7f10022f7715cbbfd3b2ff0b76"
+              }
+            },
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 95,
+                "end": 102,
+                "hash": "08e3e91e544aa5d939469e370812f482f6dad2df"
+              }
+            }
+          }
+        },
+        "b6f37c17ed5f": {
+          "text": "The Moonraker fetch does not follow redirects, so the API key never goes to another address. Keep `redirect: 'manual'` and the key out of every message.",
+          "line": 54,
+          "specs": [
+            "src/cli.ts:156-160",
+            "src/cli.ts:104-111"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 156,
+                "end": 160,
+                "hash": "c80dbd4fb18187afb64cde57951ee477996b1bbb"
+              }
+            },
+            "src/cli.ts:104-111": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 104,
+                "end": 111,
+                "hash": "3a021025dafbd4703fffaa2f5ccc0b1c4c81d469"
+              }
+            }
+          }
+        },
+        "d4163d9ca7a5": {
+          "text": "The repo is public and its docs are link-checked weekly. Keep private names, hostnames and local paths out of every committed file.",
+          "line": 55,
+          "specs": [
+            ".github/workflows/upkeep.yml:21-33",
+            "test/kit.test.mjs:138-151"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            ".github/workflows/upkeep.yml": {
+              "path": ".github/workflows/upkeep.yml",
+              "blob": "02340877fbd6612e2a1c1a8fe8e9b0dab45928a6",
+              "commit": "281101c77d352ab30182afdbaad3463dc57ee41e",
+              "range": {
+                "start": 21,
+                "end": 33,
+                "hash": "e18cafcfc6b42274a40d6aec7b9d11929aaffb8f"
+              }
+            },
+            "test/kit.test.mjs": {
+              "path": "test/kit.test.mjs",
+              "blob": "b9349179b78f16d4f1bc4d5039f04f87154a3da7",
+              "commit": "c6944e235163560a7857d35825150dc99a510fc0",
+              "range": {
+                "start": 138,
+                "end": 151,
+                "hash": "c34a8ce4ac661877b6515f81697f06998d5fd9ee"
+              }
+            }
+          }
+        },
+        "dbbff4f98730": {
+          "text": "Windows is not covered by CI (ubuntu-latest only), so behaviour there is untested.",
+          "line": 60,
+          "specs": [
+            ".github/workflows/ci.yml:23-27"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            ".github/workflows/ci.yml": {
+              "path": ".github/workflows/ci.yml",
+              "blob": "769a01fbf0b6e104be4a0c53868d4af1db95c7cc",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 23,
+                "end": 27,
+                "hash": "1a6952bbad881b5354bff25d49f06798e0dc9925"
+              }
+            }
+          }
+        }
+      },
+      "pinnedAt": "2026-11-22T09:26:57.811Z",
+      "head": "decb98b48353de123b2db47dcde488a3f7ac808f"
+    },
+    "klipper-doctor-architecture": {
+      "claims": {
+        "7b9add1aad81": {
+          "text": "A TypeScript package, ESM, built to a committed `dist/` and published to npm as one library and one CLI. It has no runtime dependencies. The engine in `src/c...",
+          "line": 11,
+          "specs": [
+            "package.json#type",
+            "package.json#bin",
+            "package.json#devDependencies",
+            "src/core/index.ts:384-398"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#type": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "type",
+                "hash": "104552135e0a03cc60690d55ea338c29215ae902",
+                "value": "\"module\""
+              }
+            },
+            "package.json#bin": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "bin",
+                "hash": "f1a963c331abe16f646ff5e44c0715e15b12140b",
+                "value": "{\"klipper-doctor\":\"dist/cli.js\"}"
+              }
+            },
+            "package.json#devDependencies": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "devDependencies",
+                "hash": "20bcee17bad1c1cfda0f25903a455dbc97a483b2",
+                "value": "{\"@types/node\":\"^26.6.5\",\"typescript\":\"^7.0.2\"}"
+              }
+            },
+            "src/core/index.ts": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 384,
+                "end": 398,
+                "hash": "c62bcae389f8bc5cdbcf7f93707d756315efb810"
+              }
+            }
+          }
+        },
+        "acdf6feefc20": {
+          "text": "**CLI**, `src/cli.ts`: parses arguments, loads each input (file, `-` for stdin, or a Moonraker URL), calls `analyze`, renders the chosen format and sets the ...",
+          "line": 27,
+          "specs": [
+            "src/cli.ts:36-93",
+            "src/cli.ts:251-301"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 36,
+                "end": 93,
+                "hash": "e17598971f7ec9466b7dec2f18c2f13e5eaa6426"
+              }
+            },
+            "src/cli.ts:251-301": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 251,
+                "end": 301,
+                "hash": "7decaac1f0404cef44cf46cd539c2722222377da"
+              }
+            }
+          }
+        },
+        "db567f049fdb": {
+          "text": "**Option table**, `src/options.ts`, and **completions**, `src/completions.ts`: the options are described once, and `--help` and the bash, zsh and fish comple...",
+          "line": 28,
+          "specs": [
+            "src/options.ts:1-2",
+            "src/completions.ts:101-104",
+            "src/cli.ts:251-257"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/options.ts": {
+              "path": "src/options.ts",
+              "blob": "00984ea6f3edc105a3dee0dddde0001f85d8fada",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 1,
+                "end": 2,
+                "hash": "1a06174d32946df47a55c8a1179195f08c423913"
+              }
+            },
+            "src/completions.ts": {
+              "path": "src/completions.ts",
+              "blob": "15346b54613aa3a2b928cd47432e54ce40a55004",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 101,
+                "end": 104,
+                "hash": "5e865993d5b2a879677b7e654b4db131e8900f96"
+              }
+            },
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 251,
+                "end": 257,
+                "hash": "3c06ffa654f02a0092bb656c9439cc108f180ed3"
+              }
+            }
+          }
+        },
+        "ecc066754c9e": {
+          "text": "**Engine entry**, `src/core/index.ts`: `analyze(text, opts)` never throws, and `rulesMetadata()` lists every rule. `src/index.ts` re-exports it as the librar...",
+          "line": 29,
+          "specs": [
+            "src/core/index.ts:384-420",
+            "src/index.ts",
+            "package.json#exports"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/index.ts": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 384,
+                "end": 420,
+                "hash": "0fc8cbbfc34b76c3806e773ea6331a0ebae8dfbe"
+              }
+            },
+            "src/index.ts": {
+              "path": "src/index.ts",
+              "blob": "17f45946d4e55c566863e92287eed14da5cbb956",
+              "commit": "29aad7abea4a130ef1bba98d2941939bbafa55cb"
+            },
+            "package.json#exports": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "exports",
+                "hash": "1da2fc1aec47a6bb426428e1b50556dd5a309d98",
+                "value": "{\".\":{\"default\":\"./dist/index.js\",\"types\":\"./dist/index.d.ts\"},\"./package.json\":\"./package.json\"}"
+              }
+            }
+          }
+        },
+        "0e640a5affb3": {
+          "text": "**Log parser**, `src/core/logParser.ts`: splits lines (LF, CRLF, lone CR), decides whether text looks like a `klippy.log`, and cuts it into sessions, one per...",
+          "line": 30,
+          "specs": [
+            "src/core/logParser.ts:62-134",
+            "src/core/logParser.ts:31-49"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/logParser.ts": {
+              "path": "src/core/logParser.ts",
+              "blob": "83011fd523ce839bd9ac0011a13005f928200784",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 62,
+                "end": 134,
+                "hash": "fe2a357e987c91878e6dfdc1bb3d7663ae1d557a"
+              }
+            },
+            "src/core/logParser.ts:31-49": {
+              "path": "src/core/logParser.ts",
+              "blob": "83011fd523ce839bd9ac0011a13005f928200784",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 31,
+                "end": 49,
+                "hash": "e0818ceda1969fba0afc4655148f94346bf1b8db"
+              }
+            }
+          }
+        },
+        "a5d1133414c3": {
+          "text": "**Config parser**, `src/core/configParser.ts`: parses config text the way Klipper's `configfile.py` does (lowercased option names, last value wins, indent-ba...",
+          "line": 31,
+          "specs": [
+            "src/core/configParser.ts:1-12"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/configParser.ts": {
+              "path": "src/core/configParser.ts",
+              "blob": "27be1cfe0a487fc944bb5420eb8de1151e682405",
+              "commit": "2e1c526413d9ce1032ead555d8b79d7c198d404b",
+              "range": {
+                "start": 1,
+                "end": 12,
+                "hash": "e69c6c3f4b6290f953e7b279711539d2cb58811a"
+              }
+            }
+          }
+        },
+        "5ac21d260f37": {
+          "text": "**Cause finder**, `src/core/cause.ts`: picks the first shutdown reason in a session and limits what rules may read to the lines before that shutdown plus the...",
+          "line": 32,
+          "specs": [
+            "src/core/cause.ts:41-70"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/cause.ts": {
+              "path": "src/core/cause.ts",
+              "blob": "6d56972e4b6c068b0f4cc781462202ef49b9aa07",
+              "commit": "2e1c526413d9ce1032ead555d8b79d7c198d404b",
+              "range": {
+                "start": 41,
+                "end": 70,
+                "hash": "a4b42e6dffd95ee709b83c2cdf961d8fd175b093"
+              }
+            }
+          }
+        },
+        "d01b0e4d0c08": {
+          "text": "**Crash rules**, `src/core/rules/crash/` (`mcu.ts`, `tmc.ts`, `heater.ts`, `gcode.ts`, `homing.ts`, `extruder.ts`, `config.ts`, `commandError.ts`, `fallback....",
+          "line": 33,
+          "specs": [
+            "src/core/rules/crash/index.ts:27-60",
+            "src/core/rules/config/index.ts:17-35",
+            "src/core/rules/crash/commandErrorTable.ts:1-3"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/rules/crash/index.ts": {
+              "path": "src/core/rules/crash/index.ts",
+              "blob": "760f49b647d6b4c25e6f5653ac5aef1c0cfb4abc",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 27,
+                "end": 60,
+                "hash": "6c92134c36899ed186c4e716e70930a400996b47"
+              }
+            },
+            "src/core/rules/config/index.ts": {
+              "path": "src/core/rules/config/index.ts",
+              "blob": "90ad30cbd8c5fb23662ef6b8bf8e8878c1c16f67",
+              "commit": "41caf8fdc9d906ae5c86d62b858f2145cb3105aa",
+              "range": {
+                "start": 17,
+                "end": 35,
+                "hash": "17fb1ae123d3132cfd59feaa11fa49cfd0b709a7"
+              }
+            },
+            "src/core/rules/crash/commandErrorTable.ts": {
+              "path": "src/core/rules/crash/commandErrorTable.ts",
+              "blob": "7b02e7969275c31d49dc815b1b654f0a0dc6df90",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 1,
+                "end": 3,
+                "hash": "0da6804bdbe339462435d5ff71baf424d8761586"
+              }
+            }
+          }
+        },
+        "52f9d0d82403": {
+          "text": "**Suppression**, `src/core/suppress.ts`: drops config findings named by `--ignore` or by a `# klipper-doctor: ignore <rule-id>` comment.",
+          "line": 34,
+          "specs": [
+            "src/core/suppress.ts:3-12",
+            "src/core/suppress.ts:34-57"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/suppress.ts": {
+              "path": "src/core/suppress.ts",
+              "blob": "63ba6c467ceaca0306db88e6df5e8149d7731f5f",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 3,
+                "end": 12,
+                "hash": "a20863fa4b4563bdcf55aa903442af79c6b1dfd2"
+              }
+            },
+            "src/core/suppress.ts:34-57": {
+              "path": "src/core/suppress.ts",
+              "blob": "63ba6c467ceaca0306db88e6df5e8149d7731f5f",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 34,
+                "end": 57,
+                "hash": "20d87eca602cfc246e23f22d1e48c657380b820f"
+              }
+            }
+          }
+        },
+        "7eeef98c4230": {
+          "text": "**Report**, `src/core/report.ts`: renders a report as text, Markdown or GitHub workflow commands; the JSON form is the report object itself.",
+          "line": 35,
+          "specs": [
+            "src/core/report.ts:56-148",
+            "src/cli.ts:283-288"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/report.ts": {
+              "path": "src/core/report.ts",
+              "blob": "ba1900836fb90ed05fe5f48cdbed91bf74ebc19f",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 56,
+                "end": 148,
+                "hash": "0b25e63a0db0e3705ea614fcb6c10fec49289639"
+              }
+            },
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 283,
+                "end": 288,
+                "hash": "6d188c14e857cb2f6841cc26c5769d6f73c519ae"
+              }
+            }
+          }
+        },
+        "75dac5981c08": {
+          "text": "**Shipped build**: `dist/` is committed, and the package ships only `dist`, `README.md` and `LICENSE`.",
+          "line": 36,
+          "specs": [
+            "package.json#files",
+            ".github/workflows/ci.yml:38-39"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#files": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "files",
+                "hash": "f368efa64d162dcc7c82d45465622d165861d3a8",
+                "value": "[\"dist\",\"README.md\",\"LICENSE\"]"
+              }
+            },
+            ".github/workflows/ci.yml": {
+              "path": ".github/workflows/ci.yml",
+              "blob": "769a01fbf0b6e104be4a0c53868d4af1db95c7cc",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 38,
+                "end": 39,
+                "hash": "d1cde00ce43b592b85df10703490cbec48365b8a"
+              }
+            }
+          }
+        },
+        "f60b5529885a": {
+          "text": "**Integrations that run the built CLI**: the composite GitHub Action in `action.yml` runs `dist/cli.js` with `--format github`, and `.pre-commit-hooks.yaml` ...",
+          "line": 37,
+          "specs": [
+            "action.yml:14-26",
+            ".pre-commit-hooks.yaml:10-17"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "action.yml": {
+              "path": "action.yml",
+              "blob": "80d3e71b3f6a580317cb3ae4e2e2d0a1c1a6aef8",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 14,
+                "end": 26,
+                "hash": "05b3bb622cfed31ca9537a7b8ce2881881ca3ada"
+              }
+            },
+            ".pre-commit-hooks.yaml": {
+              "path": ".pre-commit-hooks.yaml",
+              "blob": "75147bf38d11dbde51b4ff2e69bd92a8b31da04c",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 10,
+                "end": 17,
+                "hash": "491473113228f123905b9303df2afdb9bbdf5408"
+              }
+            }
+          }
+        },
+        "f5839507afc1": {
+          "text": "**Dev scripts**, `scripts/`: rule table generator, command-error table generator, fixture builder, sample-config checker, benchmark, asset renderer, release ...",
+          "line": 38,
+          "specs": [
+            "package.json#scripts",
+            "scripts/release.mjs:1-10"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#scripts": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "scripts",
+                "hash": "435f491ef1703cb427d60b94deb7f612f2ef13df",
+                "value": "{\"assets\":\"node scripts/render-assets.mjs\",\"bench\":\"node scripts/bench.mjs\",\"build\":\"tsc -p tsconfig.json && node -e ..."
+              }
+            },
+            "scripts/release.mjs": {
+              "path": "scripts/release.mjs",
+              "blob": "4c1083d672adf28d7110c5968e10983de739db47",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 1,
+                "end": 10,
+                "hash": "6a12ff7e99cc0e99a6d7391dd0b5d698ed82e01c"
+              }
+            }
+          }
+        },
+        "5c1483e3ad3d": {
+          "text": "**GitHub workflows**: `ci.yml` (typecheck, tests, `dist` and rule table checks, and the Action on a clean and a broken config), `publish.yml` (npm publish an...",
+          "line": 39,
+          "specs": [
+            ".github/workflows/ci.yml:1-60",
+            ".github/workflows/publish.yml:20-24",
+            ".github/workflows/upkeep.yml:1-5",
+            ".github/workflows/dependabot-automerge.yml:8-23"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            ".github/workflows/ci.yml": {
+              "path": ".github/workflows/ci.yml",
+              "blob": "769a01fbf0b6e104be4a0c53868d4af1db95c7cc",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 1,
+                "end": 60,
+                "hash": "4cd1d70203c1717da4053fbf4596a8140dd7f03d"
+              }
+            },
+            ".github/workflows/publish.yml": {
+              "path": ".github/workflows/publish.yml",
+              "blob": "a93826b8902c539c81997e0e7c1877665cd9aee2",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 20,
+                "end": 24,
+                "hash": "f3ebe1233fd386d17af892963aaa4b405ee15479"
+              }
+            },
+            ".github/workflows/upkeep.yml": {
+              "path": ".github/workflows/upkeep.yml",
+              "blob": "02340877fbd6612e2a1c1a8fe8e9b0dab45928a6",
+              "commit": "281101c77d352ab30182afdbaad3463dc57ee41e",
+              "range": {
+                "start": 1,
+                "end": 5,
+                "hash": "c3fc0a2a6654d3162ee1519327d978fd3d5dd884"
+              }
+            },
+            ".github/workflows/dependabot-automerge.yml": {
+              "path": ".github/workflows/dependabot-automerge.yml",
+              "blob": "f59a10c481690561c108a826da555395cb7f9092",
+              "commit": "613159f772ab8fbdf562d24153713fbd08d6eea3",
+              "range": {
+                "start": 8,
+                "end": 23,
+                "hash": "369d9a853224f7fdeb6659159eec9eac06c570eb"
+              }
+            }
+          }
+        },
+        "79d98aff07ea": {
+          "text": "The CLI parses arguments. With no input it reads `~/printer_data/logs/klippy.log` if that file exists, and otherwise prints the usage and exits 2.",
+          "line": 43,
+          "specs": [
+            "src/cli.ts:36-93",
+            "src/cli.ts:266-273"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 36,
+                "end": 93,
+                "hash": "e17598971f7ec9466b7dec2f18c2f13e5eaa6426"
+              }
+            },
+            "src/cli.ts:266-273": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 266,
+                "end": 273,
+                "hash": "d5747dcc034437f77535ccdc8f25a77e96983cbb"
+              }
+            }
+          }
+        },
+        "8fee4a25171f": {
+          "text": "Each input is loaded: a path through `readFileSync`, `-` from stdin, and an `http(s)` URL through the Moonraker fetch described under External services.",
+          "line": 44,
+          "specs": [
+            "src/cli.ts:207-209",
+            "src/cli.ts:231-244"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 207,
+                "end": 209,
+                "hash": "ff6f89e6bc273ea2485326b24b2473fca02ea403"
+              }
+            },
+            "src/cli.ts:231-244": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 231,
+                "end": 244,
+                "hash": "458c2ee573f0894e787a3ff2d6e1b05f6b9d1bdf"
+              }
+            }
+          }
+        },
+        "931a5c24e3be": {
+          "text": "`analyze` cleans the text (byte order mark, NUL bytes), splits it into lines, and returns a single `unusable-input` finding for empty input, Moonraker's own ...",
+          "line": 45,
+          "specs": [
+            "src/core/index.ts:215-225",
+            "src/core/index.ts:247-283"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/index.ts": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 215,
+                "end": 225,
+                "hash": "716cf77f1f3881c3b26f58fab57c46c2eb82a48e"
+              }
+            },
+            "src/core/index.ts:247-283": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 247,
+                "end": 283,
+                "hash": "a0f9277de9e53a710f212a628112eb1ad5ebc2f2"
+              }
+            }
+          }
+        },
+        "3013d7adf9ab": {
+          "text": "Text that is not recognised as a klippy log and whose name does not end in `.log` is treated as a hand-written `printer.cfg`: config rules only, with inline ...",
+          "line": 46,
+          "specs": [
+            "src/core/index.ts:285-317"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/index.ts": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 285,
+                "end": 317,
+                "hash": "962c20d205df363db77dc774876036af15cedc54"
+              }
+            }
+          }
+        },
+        "631c75c1adf2": {
+          "text": "Otherwise the log is parsed into sessions and the last one is analysed. Its config dump goes through the config rules, a note is added when an MCU runs a dif...",
+          "line": 47,
+          "specs": [
+            "src/core/index.ts:319-350"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/index.ts": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 319,
+                "end": 350,
+                "hash": "ba20f34f4cb977861777eb070141d1efc4dcbc0d"
+              }
+            }
+          }
+        },
+        "6370291de5fd": {
+          "text": "When no crash rule gives an error, the engine reports an unknown shutdown reason if the session shows a failure, and otherwise `no-failure-found`, which name...",
+          "line": 48,
+          "specs": [
+            "src/core/index.ts:351-362",
+            "src/core/index.ts:165-190"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/index.ts": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 351,
+                "end": 362,
+                "hash": "5e8a06a608e1c7029c313d06c7c935e7c97fb6e6"
+              }
+            },
+            "src/core/index.ts:165-190": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 165,
+                "end": 190,
+                "hash": "30eaec413f274187dda48e8f868d6589b42984f5"
+              }
+            }
+          }
+        },
+        "10fcd296eece": {
+          "text": "A finding carries an id, severity, title, detail, fix, an optional Klipper docs link and evidence lines with line numbers. Title, detail and evidence text ar...",
+          "line": 49,
+          "specs": [
+            "src/core/types.ts:8-19",
+            "src/core/index.ts:54-66"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/types.ts": {
+              "path": "src/core/types.ts",
+              "blob": "123004711378fda97f696637c94669262b3e1b36",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 8,
+                "end": 19,
+                "hash": "fd1302bd1dc3ab75cd51e465734b9506a0623ced"
+              }
+            },
+            "src/core/index.ts": {
+              "path": "src/core/index.ts",
+              "blob": "e5959528b8fabf2904b3e9c50a33f4a5135a7772",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 54,
+                "end": 66,
+                "hash": "366355880484756e8d551a52639791dc2cbac3a7"
+              }
+            }
+          }
+        },
+        "f3b7d8eca3da": {
+          "text": "The CLI renders the report in the chosen format (`--config-only` empties the crash list first) and exits 1 when any finding is an error, 0 otherwise. Usage a...",
+          "line": 50,
+          "specs": [
+            "src/cli.ts:277-301",
+            "src/cli.ts:18-23"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 277,
+                "end": 301,
+                "hash": "1df29271bf2094e53ea5b07db5acbce085228092"
+              }
+            },
+            "src/cli.ts:18-23": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 18,
+                "end": 23,
+                "hash": "ea885401d84e160423aa3bccd428b440f5533862"
+              }
+            }
+          }
+        },
+        "5be7837d5702": {
+          "text": "Nothing is stored. The only writes are to stdout and stderr, and the source reads files only through `readFileSync` on the named inputs and the default log p...",
+          "line": 54,
+          "specs": [
+            "src/cli.ts:207-209",
+            "src/cli.ts:231-244",
+            "src/cli.ts:266-273"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 207,
+                "end": 209,
+                "hash": "ff6f89e6bc273ea2485326b24b2473fca02ea403"
+              }
+            },
+            "src/cli.ts:231-244": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 231,
+                "end": 244,
+                "hash": "458c2ee573f0894e787a3ff2d6e1b05f6b9d1bdf"
+              }
+            },
+            "src/cli.ts:266-273": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 266,
+                "end": 273,
+                "hash": "d5747dcc034437f77535ccdc8f25a77e96983cbb"
+              }
+            }
+          }
+        },
+        "fb661d143f7a": {
+          "text": "No login and no accounts. The only credential is an optional Moonraker API key, read from an environment variable and sent as `X-Api-Key`. It is never printe...",
+          "line": 58,
+          "specs": [
+            "src/cli.ts:104-111",
+            "src/cli.ts:155-160",
+            "src/cli.ts:183-190"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 104,
+                "end": 111,
+                "hash": "3a021025dafbd4703fffaa2f5ccc0b1c4c81d469"
+              }
+            },
+            "src/cli.ts:155-160": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 155,
+                "end": 160,
+                "hash": "8a42ade66d37ae1eee482de9d5b1b7745e9f8dc3"
+              }
+            },
+            "src/cli.ts:183-190": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 183,
+                "end": 190,
+                "hash": "562f7a3d6e5a2e90aa7c32fb8c2370a846f43881"
+              }
+            }
+          }
+        },
+        "1cd35f552f40": {
+          "text": "**Moonraker** (the printer's API), only when a URL is given: `GET /server/files/klippy.log`, then `GET /server/files/logs/klippy.log` when the first answers ...",
+          "line": 62,
+          "specs": [
+            "src/cli.ts:13-16",
+            "src/cli.ts:137-166",
+            "src/options.ts:6",
+            "src/options.ts:24-25"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 13,
+                "end": 16,
+                "hash": "583b965a963fd39a94244151877adc46569f5a19"
+              }
+            },
+            "src/cli.ts:137-166": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 137,
+                "end": 166,
+                "hash": "be509a33a563e3f736295d6ec909c9063afa81c1"
+              }
+            },
+            "src/options.ts": {
+              "path": "src/options.ts",
+              "blob": "00984ea6f3edc105a3dee0dddde0001f85d8fada",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 6,
+                "end": 6,
+                "hash": "be53c1b4ed00d7674f7b2785c3d6d01e2ed85517"
+              }
+            },
+            "src/options.ts:24-25": {
+              "path": "src/options.ts",
+              "blob": "00984ea6f3edc105a3dee0dddde0001f85d8fada",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 24,
+                "end": 25,
+                "hash": "e7dc53464c4063818e384fbbe0210dea656e5173"
+              }
+            }
+          }
+        },
+        "c373fd948949": {
+          "text": "No other network call is made at runtime. The Klipper docs and source links in findings are text for the reader and are not fetched.",
+          "line": 63,
+          "specs": [
+            "src/cli.ts:159",
+            "src/core/rules/types.ts:64-65"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 159,
+                "end": 159,
+                "hash": "773baf6407521633d492af8d08a004ceb9716981"
+              }
+            },
+            "src/core/rules/types.ts": {
+              "path": "src/core/rules/types.ts",
+              "blob": "4447e9b9a091399b98de38129c04b1cb918baf0b",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 64,
+                "end": 65,
+                "hash": "a9909f9059adbd2ee9cfc0502ffc18a5e86e1fe6"
+              }
+            }
+          }
+        },
+        "3da93c83c128": {
+          "text": "At build and release time only: the npm registry and GitHub, through `publish.yml`, which uses the `NPM_TOKEN` secret when set and otherwise npm trusted publ...",
+          "line": 64,
+          "specs": [
+            ".github/workflows/publish.yml:1-18",
+            ".github/workflows/publish.yml:70-83"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            ".github/workflows/publish.yml": {
+              "path": ".github/workflows/publish.yml",
+              "blob": "a93826b8902c539c81997e0e7c1877665cd9aee2",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 1,
+                "end": 18,
+                "hash": "6df3090dc7f3738535f172d57a0249d5e7281150"
+              }
+            },
+            ".github/workflows/publish.yml:70-83": {
+              "path": ".github/workflows/publish.yml",
+              "blob": "a93826b8902c539c81997e0e7c1877665cd9aee2",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 70,
+                "end": 83,
+                "hash": "d9230451a79ff7827b5fc01c3ed7234381ebae7a"
+              }
+            }
+          }
+        },
+        "66be28e4e129": {
+          "text": "The same engine runs in the browser at hotend.app/klipper-doctor. That page lives in another repo, so how it vendors this engine could not be checked here.",
+          "line": 68,
+          "specs": [
+            "README.md"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45"
+            }
+          }
+        }
+      },
+      "pinnedAt": "2026-11-22T09:26:57.880Z",
+      "head": "decb98b48353de123b2db47dcde488a3f7ac808f"
+    },
+    "klipper-doctor-brand": {
+      "claims": {
+        "cbe950b78334": {
+          "text": "The name is `klipper-doctor`: all lower case, with a hyphen. It is the npm package, the command, the README title and the GitHub Action's name.",
+          "line": 16,
+          "specs": [
+            "package.json#name",
+            "package.json#bin",
+            "README.md:1",
+            "action.yml:1"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#name": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "name",
+                "hash": "6db2b13bdfd9dfe4d69481c4f36c57e7860a4428",
+                "value": "\"klipper-doctor\""
+              }
+            },
+            "package.json#bin": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "bin",
+                "hash": "f1a963c331abe16f646ff5e44c0715e15b12140b",
+                "value": "{\"klipper-doctor\":\"dist/cli.js\"}"
+              }
+            },
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 1,
+                "end": 1,
+                "hash": "253a1929c87e152592b88543f7e347b7a798ffcd"
+              }
+            },
+            "action.yml": {
+              "path": "action.yml",
+              "blob": "80d3e71b3f6a580317cb3ae4e2e2d0a1c1a6aef8",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 1,
+                "end": 1,
+                "hash": "e7c72a5f29bd7f46e4c8bbd2254fbf20ccdcf999"
+              }
+            }
+          }
+        },
+        "435f05e6d2f2": {
+          "text": "It stays lower case at the start of a sentence (\"klipper-doctor reads a `klippy.log`...\"), and in the social card it is drawn as `klipper-doctor` with the hy...",
+          "line": 17,
+          "specs": [
+            "README.md:6",
+            "scripts/render-assets.mjs:141-165"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 6,
+                "end": 6,
+                "hash": "933d9e554b89cf5a6d59431819e7071e6c088623"
+              }
+            },
+            "scripts/render-assets.mjs": {
+              "path": "scripts/render-assets.mjs",
+              "blob": "c3abc363ba82cdabb69079f6a24e9b24fac6996c",
+              "commit": "78f8bce21ef210fdc3ce2600802d7a987d24d56d",
+              "range": {
+                "start": 141,
+                "end": 165,
+                "hash": "ae62c169ee6f5c34f191696aba51b7a0659d4f13"
+              }
+            }
+          }
+        },
+        "d8d3e088f579": {
+          "text": "Words around it keep their own casing: Klipper, Moonraker, Mainsail, Fluidd, and file names such as `klippy.log` and `printer.cfg` in code font.",
+          "line": 18,
+          "specs": [
+            "README.md:6",
+            "README.md:29"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 6,
+                "end": 6,
+                "hash": "933d9e554b89cf5a6d59431819e7071e6c088623"
+              }
+            },
+            "README.md:29-29": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 29,
+                "end": 29,
+                "hash": "21ae4fb6b7404fd2b1760a9f17041541bcdabbb2"
+              }
+            }
+          }
+        },
+        "51dec1f38391": {
+          "text": "The maker credit is \"Built by Hotend\", with Hotend capitalised and linked.",
+          "line": 19,
+          "specs": [
+            "README.md:80"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 80,
+                "end": 80,
+                "hash": "dfbea49ce4bd942556e1dd316d2d36dc9ef65c80"
+              }
+            }
+          }
+        },
+        "20d317075873": {
+          "text": "\"klipper-doctor reads a `klippy.log` or `printer.cfg` and tells you in plain English why Klipper stopped and what to try next.\" The npm description says the ...",
+          "line": 23,
+          "specs": [
+            "README.md:6",
+            "package.json#description",
+            "scripts/render-assets.mjs:141-165"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 6,
+                "end": 6,
+                "hash": "933d9e554b89cf5a6d59431819e7071e6c088623"
+              }
+            },
+            "package.json#description": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "description",
+                "hash": "d7136b3fef0f0ea0adafcda90a5a77a88b7629e5",
+                "value": "\"Reads a klippy.log or printer.cfg and says in plain English why Klipper stopped and what to try next.\""
+              }
+            },
+            "scripts/render-assets.mjs": {
+              "path": "scripts/render-assets.mjs",
+              "blob": "c3abc363ba82cdabb69079f6a24e9b24fac6996c",
+              "commit": "78f8bce21ef210fdc3ce2600802d7a987d24d56d",
+              "range": {
+                "start": 141,
+                "end": 165,
+                "hash": "ae62c169ee6f5c34f191696aba51b7a0659d4f13"
+              }
+            }
+          }
+        },
+        "44867a3c61ce": {
+          "text": "People who run a Klipper 3D printer and have a log or a config that is not behaving: someone who has the `klippy.log` from Mainsail or Fluidd, someone checki...",
+          "line": 27,
+          "specs": [
+            "README.md:15-35",
+            "CONTRIBUTING.md:3"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 15,
+                "end": 35,
+                "hash": "df842e0fa076ec4263df94ecb1269e48ae9433f8"
+              }
+            },
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 3,
+                "end": 3,
+                "hash": "acedd7dc9b1e3b011116060614051190ab430d1a"
+              }
+            }
+          }
+        },
+        "af282fcb60ea": {
+          "text": "It is a tool that reads text and explains a Klipper shutdown, with the cause and the fix, and lints a printer config.",
+          "line": 31,
+          "specs": [
+            "README.md:6",
+            "src/options.ts:47"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 6,
+                "end": 6,
+                "hash": "933d9e554b89cf5a6d59431819e7071e6c088623"
+              }
+            },
+            "src/options.ts": {
+              "path": "src/options.ts",
+              "blob": "00984ea6f3edc105a3dee0dddde0001f85d8fada",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 47,
+                "end": 47,
+                "hash": "bd64fa577bc60f1792978f02856d4544b4999f32"
+              }
+            }
+          }
+        },
+        "9d54e5062ccd": {
+          "text": "It is built from the Klipper docs and source: every rule traces to one, so it covers less than a model might.",
+          "line": 32,
+          "specs": [
+            "README.md:72"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 72,
+                "end": 72,
+                "hash": "8767fda4c7a66c5867877f1e616556ad7c147226"
+              }
+            }
+          }
+        },
+        "4e939520f84b": {
+          "text": "It runs on your machine and uploads nothing.",
+          "line": 33,
+          "specs": [
+            "src/options.ts:58"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/options.ts": {
+              "path": "src/options.ts",
+              "blob": "00984ea6f3edc105a3dee0dddde0001f85d8fada",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 58,
+                "end": 58,
+                "hash": "e2bedc23267adcc63c961c69c2bc40e607da0637"
+              }
+            }
+          }
+        },
+        "0b8132df2b5f": {
+          "text": "It is a companion to the log graphers and config linters it credits, not a replacement.",
+          "line": 34,
+          "specs": [
+            "README.md:72"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 72,
+                "end": 72,
+                "hash": "8767fda4c7a66c5867877f1e616556ad7c147226"
+              }
+            }
+          }
+        },
+        "c0fe63e8760c": {
+          "text": "It is not a print quality tool: ringing, adhesion and layer shifts leave nothing in the log.",
+          "line": 35,
+          "specs": [
+            "README.md:65"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 65,
+                "end": 65,
+                "hash": "43463f0e4a2d1db5e5debff9c64bf852724b5ec6"
+              }
+            }
+          }
+        },
+        "7e767e44af4f": {
+          "text": "It is not a diagnosis for vendor forks and third-party modules, nor a way to tell a bad cable from a bad power supply, nor proof that a config is correct.",
+          "line": 36,
+          "specs": [
+            "README.md:66-68"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 66,
+                "end": 68,
+                "hash": "b28368f8ed5bae4f21efcd4a44ff0cb33124e871"
+              }
+            }
+          }
+        },
+        "721ebf6b0911": {
+          "text": "Say what happened, the likely cause and the fix, in that order.",
+          "line": 44,
+          "specs": [
+            "CONTRIBUTING.md:20"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 20,
+                "end": 20,
+                "hash": "c67275c7073863b08f83e64a614045a35e6a1052"
+              }
+            }
+          }
+        },
+        "e06444196cc1": {
+          "text": "State the limits next to the claim, such as \"An AI model did that reading and nobody has second-checked it, so treat it as one reader's judgement.\"",
+          "line": 45,
+          "specs": [
+            "README.md:61"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 61,
+                "end": 61,
+                "hash": "ff6e3c8e55f50f393366e7e0d23c945e5e5ceeee"
+              }
+            }
+          }
+        },
+        "942bc293318c": {
+          "text": "Quote Klipper's own words and link its docs or source.",
+          "line": 46,
+          "specs": [
+            "CONTRIBUTING.md:9"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 9,
+                "end": 9,
+                "hash": "ae886ab29aa129c59f8db9f3d9dde8561b207989"
+              }
+            }
+          }
+        },
+        "155a6d1b8e85": {
+          "text": "Credit other tools by name.",
+          "line": 47,
+          "specs": [
+            "README.md:70-72"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 70,
+                "end": 72,
+                "hash": "f30e823a28799318e2771e834955868a9f80e0cd"
+              }
+            }
+          }
+        },
+        "7b5d76a58e7c": {
+          "text": "Give the next command to try, as in the CLI's error messages.",
+          "line": 48,
+          "specs": [
+            "src/cli.ts:204-205"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 204,
+                "end": 205,
+                "hash": "557631c55e1f4664e8f5e272e7678a4a1681731e"
+              }
+            }
+          }
+        },
+        "ff41dd71acdd": {
+          "text": "Use em dashes or marketing words.",
+          "line": 52,
+          "specs": [
+            "CONTRIBUTING.md:20"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 20,
+                "end": 20,
+                "hash": "c67275c7073863b08f83e64a614045a35e6a1052"
+              }
+            }
+          }
+        },
+        "65290a982490": {
+          "text": "Claim to be the first or the only.",
+          "line": 53,
+          "specs": [
+            "README.md:70-72"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 70,
+                "end": 72,
+                "hash": "f30e823a28799318e2771e834955868a9f80e0cd"
+              }
+            }
+          }
+        },
+        "b78f048f80cd": {
+          "text": "Invent thresholds or advice with no Klipper source.",
+          "line": 54,
+          "specs": [
+            "CONTRIBUTING.md:9"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 9,
+                "end": 9,
+                "hash": "ae886ab29aa129c59f8db9f3d9dde8561b207989"
+              }
+            }
+          }
+        },
+        "eed876a797c0": {
+          "text": "README title and opening: `# klipper-doctor`, then the one-liner above, then a real captured output rather than a mock-up.",
+          "line": 60,
+          "specs": [
+            "README.md:1-13"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 1,
+                "end": 13,
+                "hash": "4eb36eee17c1bbe271a0cf6c9f73e7c0a02212b8"
+              }
+            }
+          }
+        },
+        "73d4602131c9": {
+          "text": "Section titles are short and plain: \"Try it\", \"What you get\", \"How often it helps\", \"When not to use this\", \"Other tools\", \"More\".",
+          "line": 61,
+          "specs": [
+            "README.md:15-74"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 15,
+                "end": 74,
+                "hash": "d4fae741ad93c676ff445993c33998b241c52a4c"
+              }
+            }
+          }
+        },
+        "cbff5b84ad55": {
+          "text": "Package description: \"Reads a klippy.log or printer.cfg and says in plain English why Klipper stopped and what to try next.\"",
+          "line": 62,
+          "specs": [
+            "package.json#description"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#description": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "description",
+                "hash": "d7136b3fef0f0ea0adafcda90a5a77a88b7629e5",
+                "value": "\"Reads a klippy.log or printer.cfg and says in plain English why Klipper stopped and what to try next.\""
+              }
+            }
+          }
+        },
+        "3e754fe91528": {
+          "text": "CLI help tagline: \"Explain why a Klipper print died and lint the printer config.\" and \"Runs on your machine. Nothing is uploaded; a Moonraker URL is fetched ...",
+          "line": 63,
+          "specs": [
+            "src/options.ts:47-58"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/options.ts": {
+              "path": "src/options.ts",
+              "blob": "00984ea6f3edc105a3dee0dddde0001f85d8fada",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 47,
+                "end": 58,
+                "hash": "903fb6afd87aef3d38bb06d1255b00a12e84c428"
+              }
+            }
+          }
+        },
+        "16359a8b5ca6": {
+          "text": "GitHub Action description: \"Lint Klipper printer.cfg files and annotate the problems on the commit or pull request.\"",
+          "line": 64,
+          "specs": [
+            "action.yml:2"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "action.yml": {
+              "path": "action.yml",
+              "blob": "80d3e71b3f6a580317cb3ae4e2e2d0a1c1a6aef8",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 2,
+                "end": 2,
+                "hash": "c0723b08d4574edfd3148c9f301707ad330d77a8"
+              }
+            }
+          }
+        },
+        "8b2d4f7563e2": {
+          "text": "Pre-commit hook description: \"Lint Klipper printer config files (printer.cfg and the other .cfg files in a config repo)\".",
+          "line": 65,
+          "specs": [
+            ".pre-commit-hooks.yaml:12"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            ".pre-commit-hooks.yaml": {
+              "path": ".pre-commit-hooks.yaml",
+              "blob": "75147bf38d11dbde51b4ff2e69bd92a8b31da04c",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 12,
+                "end": 12,
+                "hash": "7396781cae6cced40cf85928e5d64fb41fade040"
+              }
+            }
+          }
+        },
+        "df1051f5fe8f": {
+          "text": "Social card: \"Why your Klipper print died, in plain English.\" above the command `npx klipper-doctor klippy.log`.",
+          "line": 66,
+          "specs": [
+            "scripts/render-assets.mjs:141-165"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/render-assets.mjs": {
+              "path": "scripts/render-assets.mjs",
+              "blob": "c3abc363ba82cdabb69079f6a24e9b24fac6996c",
+              "commit": "78f8bce21ef210fdc3ce2600802d7a987d24d56d",
+              "range": {
+                "start": 141,
+                "end": 165,
+                "hash": "ae62c169ee6f5c34f191696aba51b7a0659d4f13"
+              }
+            }
+          }
+        },
+        "4c032d3e53a5": {
+          "text": "CTA wording is an instruction with the command to run: \"To see a report without a printer, feed it the sample log from this repo\" and \"No Node? The same engi...",
+          "line": 67,
+          "specs": [
+            "README.md:17-35"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 17,
+                "end": 35,
+                "hash": "25f59a65aa1eb207a14be6835d300979416f86a0"
+              }
+            }
+          }
+        },
+        "68d61e01a8b3": {
+          "text": "Finding shape: a title with the rule id in brackets, a plain detail paragraph, then a line starting \"Fix:\". Example: \"Timer too close [mcu-timer-too-close]\".",
+          "line": 68,
+          "specs": [
+            "README.md:37-57",
+            "src/core/report.ts:136-148"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 37,
+                "end": 57,
+                "hash": "4cd69d0b1c2e09e37dda586d57dd4ff59833cff4"
+              }
+            },
+            "src/core/report.ts": {
+              "path": "src/core/report.ts",
+              "blob": "ba1900836fb90ed05fe5f48cdbed91bf74ebc19f",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 136,
+                "end": 148,
+                "hash": "32dc54dbc23345a15d776f05db1547fd09e87834"
+              }
+            }
+          }
+        },
+        "0e94f9eb06dc": {
+          "text": "Empty state: the note \"No failure found in the log\", with the line \"If the print still failed, check that this is the right session and the right log file.\"",
+          "line": 69,
+          "specs": [
+            "src/core/rules/crash/fallback.ts:18-25"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/core/rules/crash/fallback.ts": {
+              "path": "src/core/rules/crash/fallback.ts",
+              "blob": "39a604884ddd2c097489142f56044fa0b305d28b",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 18,
+                "end": 25,
+                "hash": "074cfa8ee40c5f83b6196db811f2c5fa2582ea73"
+              }
+            }
+          }
+        },
+        "73520e7313cd": {
+          "text": "Error tone: lower case, prefixed `klipper-doctor: `, one plain sentence that names the cause and the next step, for example \"no such file: x\" followed by whe...",
+          "line": 70,
+          "specs": [
+            "src/cli.ts:20-23",
+            "src/cli.ts:204-205",
+            "src/cli.ts:207-228"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "src/cli.ts": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 20,
+                "end": 23,
+                "hash": "a9f1eaf20e5be70cb4831834764f906f1285f004"
+              }
+            },
+            "src/cli.ts:204-205": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 204,
+                "end": 205,
+                "hash": "557631c55e1f4664e8f5e272e7678a4a1681731e"
+              }
+            },
+            "src/cli.ts:207-228": {
+              "path": "src/cli.ts",
+              "blob": "ae5c9b9242ce15844003e66b3b1d53fe8d4f2362",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 207,
+                "end": 228,
+                "hash": "26b8c3a1cba4a366065154c60164317f44dd159b"
+              }
+            }
+          }
+        },
+        "73b2356f0ba6": {
+          "text": "Issue form titles and prompts: \"Bug, wrong diagnosis\", and \"klipper-doctor blamed the wrong thing, missed the real cause, or flagged something that is fine.\"",
+          "line": 71,
+          "specs": [
+            ".github/ISSUE_TEMPLATE/bug-wrong-diagnosis.yml:1-2"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            ".github/ISSUE_TEMPLATE/bug-wrong-diagnosis.yml": {
+              "path": ".github/ISSUE_TEMPLATE/bug-wrong-diagnosis.yml",
+              "blob": "f67e10e1f4821a0a818b46d8cd44ad979f9ceaed",
+              "commit": "cd71b816fbda193c64eedf5bfd57447eb602099a",
+              "range": {
+                "start": 1,
+                "end": 2,
+                "hash": "e73d850ef67c56eaf8662c15019ffc9c5ee94a43"
+              }
+            }
+          }
+        },
+        "27611b1f723e": {
+          "text": "OG title and description: none. The repo has no web page of its own, so it ships no meta tags.",
+          "line": 72,
+          "specs": [
+            "package.json#files"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#files": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "files",
+                "hash": "f368efa64d162dcc7c82d45465622d165861d3a8",
+                "value": "[\"dist\",\"README.md\",\"LICENSE\"]"
+              }
+            }
+          }
+        },
+        "ce0f407043a3": {
+          "text": "No logo and no favicon in the repo.",
+          "line": 76,
+          "specs": [
+            "package.json#files"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#files": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "files",
+                "hash": "f368efa64d162dcc7c82d45465622d165861d3a8",
+                "value": "[\"dist\",\"README.md\",\"LICENSE\"]"
+              }
+            }
+          }
+        },
+        "c034e181234e": {
+          "text": "`assets/demo.png`: the README demo, real output drawn from `test/fixtures/demo.log`.",
+          "line": 77,
+          "specs": [
+            "scripts/render-assets.mjs:1-4",
+            "README.md:8-11"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/render-assets.mjs": {
+              "path": "scripts/render-assets.mjs",
+              "blob": "c3abc363ba82cdabb69079f6a24e9b24fac6996c",
+              "commit": "78f8bce21ef210fdc3ce2600802d7a987d24d56d",
+              "range": {
+                "start": 1,
+                "end": 4,
+                "hash": "2c7abdd762ca06e64887ccb41506f3267ffa9fc9"
+              }
+            },
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 8,
+                "end": 11,
+                "hash": "c153df8591430ee67eeb646a62a626bb5552effa"
+              }
+            }
+          }
+        },
+        "73d3bf2f195d": {
+          "text": "`assets/demo-hero.png`: a phone-width crop of one finding, used by the README at 600px and narrower.",
+          "line": 78,
+          "specs": [
+            "scripts/render-assets.mjs:1-4",
+            "README.md:8-11"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/render-assets.mjs": {
+              "path": "scripts/render-assets.mjs",
+              "blob": "c3abc363ba82cdabb69079f6a24e9b24fac6996c",
+              "commit": "78f8bce21ef210fdc3ce2600802d7a987d24d56d",
+              "range": {
+                "start": 1,
+                "end": 4,
+                "hash": "2c7abdd762ca06e64887ccb41506f3267ffa9fc9"
+              }
+            },
+            "README.md": {
+              "path": "README.md",
+              "blob": "4372282b95c2a30146e56aa869e4a697c798b715",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 8,
+                "end": 11,
+                "hash": "c153df8591430ee67eeb646a62a626bb5552effa"
+              }
+            }
+          }
+        },
+        "fb4ff03d71bb": {
+          "text": "`assets/social-preview.png` (1280 by 640): the social card, drawn by `npm run assets`. `.github/social-preview.png` is a separate 1280 by 640 file that the t...",
+          "line": 79,
+          "specs": [
+            "scripts/render-assets.mjs:1-4",
+            "test/kit.test.mjs:153-158"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "scripts/render-assets.mjs": {
+              "path": "scripts/render-assets.mjs",
+              "blob": "c3abc363ba82cdabb69079f6a24e9b24fac6996c",
+              "commit": "78f8bce21ef210fdc3ce2600802d7a987d24d56d",
+              "range": {
+                "start": 1,
+                "end": 4,
+                "hash": "2c7abdd762ca06e64887ccb41506f3267ffa9fc9"
+              }
+            },
+            "test/kit.test.mjs": {
+              "path": "test/kit.test.mjs",
+              "blob": "b9349179b78f16d4f1bc4d5039f04f87154a3da7",
+              "commit": "c6944e235163560a7857d35825150dc99a510fc0",
+              "range": {
+                "start": 153,
+                "end": 158,
+                "hash": "bcde805c1dd64867a01b62e341a46cfa681b5493"
+              }
+            }
+          }
+        },
+        "ee6e949c98ce": {
+          "text": "The Action's marketplace branding is the `check-circle` icon in orange.",
+          "line": 80,
+          "specs": [
+            "action.yml:5-7"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "action.yml": {
+              "path": "action.yml",
+              "blob": "80d3e71b3f6a580317cb3ae4e2e2d0a1c1a6aef8",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 5,
+                "end": 7,
+                "hash": "bb300f676a375ecd621a5ee71ff5db54d2e9c294"
+              }
+            }
+          }
+        },
+        "6d6396792c3c": {
+          "text": "Bugs and rule requests go to the GitHub issue tracker, through the issue forms. Blank issues are off.",
+          "line": 84,
+          "specs": [
+            "package.json#bugs.url",
+            ".github/ISSUE_TEMPLATE/config.yml:1"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#bugs.url": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "bugs.url",
+                "hash": "755cdc7073135a00dbef84cd5133c1eb833dcbbc",
+                "value": "\"https://github.com/kd-011/klipper-doctor/issues\""
+              }
+            },
+            ".github/ISSUE_TEMPLATE/config.yml": {
+              "path": ".github/ISSUE_TEMPLATE/config.yml",
+              "blob": "e20581f6a2384e25a8681550606227124afe6874",
+              "commit": "613159f772ab8fbdf562d24153713fbd08d6eea3",
+              "range": {
+                "start": 1,
+                "end": 1,
+                "hash": "83cf734bd85035a2723d3fcd5c7e72a32249ee44"
+              }
+            }
+          }
+        },
+        "bb09ce7a098b": {
+          "text": "Security problems go through GitHub's private vulnerability reporting, not a public issue. SECURITY.md carries no email address.",
+          "line": 85,
+          "specs": [
+            "SECURITY.md:5",
+            ".github/ISSUE_TEMPLATE/config.yml:2-5"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "SECURITY.md": {
+              "path": "SECURITY.md",
+              "blob": "4a395c5dc285d91fcca2c8cae619a9859fea312f",
+              "commit": "cd71b816fbda193c64eedf5bfd57447eb602099a",
+              "range": {
+                "start": 5,
+                "end": 5,
+                "hash": "852972fc2f1efe430b48c7d3b2b2c6866a4ae576"
+              }
+            },
+            ".github/ISSUE_TEMPLATE/config.yml": {
+              "path": ".github/ISSUE_TEMPLATE/config.yml",
+              "blob": "e20581f6a2384e25a8681550606227124afe6874",
+              "commit": "613159f772ab8fbdf562d24153713fbd08d6eea3",
+              "range": {
+                "start": 2,
+                "end": 5,
+                "hash": "0d275040b59d4c76879d8f674bd4184dc71e8a3e"
+              }
+            }
+          }
+        },
+        "708ee2619eb9": {
+          "text": "Conduct reports use the same private channel and say they are a conduct report. It is the only private channel the project has.",
+          "line": 86,
+          "specs": [
+            "CODE_OF_CONDUCT.md:19"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "CODE_OF_CONDUCT.md": {
+              "path": "CODE_OF_CONDUCT.md",
+              "blob": "f835d73a351cd1dc0b7c957d0a953db034623ac3",
+              "commit": "613159f772ab8fbdf562d24153713fbd08d6eea3",
+              "range": {
+                "start": 19,
+                "end": 19,
+                "hash": "df4b2e958936279970e56295bcc6f85a2cbd2019"
+              }
+            }
+          }
+        },
+        "68bcce26dec2": {
+          "text": "Licence: MIT, \"Copyright (c) 2026 kd-011\". Contributors agree their work is released under it.",
+          "line": 87,
+          "specs": [
+            "LICENSE:3",
+            "CONTRIBUTING.md:41"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "LICENSE": {
+              "path": "LICENSE",
+              "blob": "017a3dc11f5bd2f877b6dd3a9cb87eeadd26d5d8",
+              "commit": "29aad7abea4a130ef1bba98d2941939bbafa55cb",
+              "range": {
+                "start": 3,
+                "end": 3,
+                "hash": "b160620a517f283595d95d4536e7afa3016f8491"
+              }
+            },
+            "CONTRIBUTING.md": {
+              "path": "CONTRIBUTING.md",
+              "blob": "9ef811c20f9608de1716b1795ae37a366b0e75ad",
+              "commit": "504e53b4684cee5e29a577130cb7057cb9a62e45",
+              "range": {
+                "start": 41,
+                "end": 41,
+                "hash": "b9da7397d989dcce967e723c8efe9b8fa92f29d9"
+              }
+            }
+          }
+        },
+        "89d3198569ef": {
+          "text": "Author in `package.json` is `kd-011`.",
+          "line": 88,
+          "specs": [
+            "package.json#author"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#author": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "author",
+                "hash": "830a07c8430d8631b3a988da5e39a5d3911a38aa",
+                "value": "\"kd-011\""
+              }
+            }
+          }
+        },
+        "56eb228a398a": {
+          "text": "No privacy page, terms page or business name: the repo has no web page, and the tool uploads nothing.",
+          "line": 89,
+          "specs": [
+            "package.json#files",
+            "src/options.ts:58"
+          ],
+          "head": "decb98b48353de123b2db47dcde488a3f7ac808f",
+          "files": {
+            "package.json#files": {
+              "path": "package.json",
+              "blob": "11908c0dc9f59ca3d6bac7658cec31dcaa79bcee",
+              "commit": "be26e1cd2fade8179a05759cd7d5deb41366bf35",
+              "jsonKey": {
+                "key": "files",
+                "hash": "f368efa64d162dcc7c82d45465622d165861d3a8",
+                "value": "[\"dist\",\"README.md\",\"LICENSE\"]"
+              }
+            },
+            "src/options.ts": {
+              "path": "src/options.ts",
+              "blob": "00984ea6f3edc105a3dee0dddde0001f85d8fada",
+              "commit": "abdd17bef882d5d848c80b0c934e1df9bae138a8",
+              "range": {
+                "start": 58,
+                "end": 58,
+                "hash": "e2bedc23267adcc63c961c69c2bc40e607da0637"
+              }
+            }
+          }
+        }
+      },
+      "pinnedAt": "2026-11-22T09:26:57.951Z",
+      "head": "decb98b48353de123b2db47dcde488a3f7ac808f"
     }
   }
 }
