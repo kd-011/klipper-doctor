@@ -17,7 +17,6 @@ Who the project speaks as. There is no DESIGN.md because the repo has no user-fa
 - It stays lower case at the start of a sentence ("klipper-doctor reads a `klippy.log`..."), and in the social card it is drawn as `klipper-doctor` with the hyphen picked out in amber. <!-- src: README.md:6, scripts/render-assets.mjs:141-165 -->
 - Words around it keep their own casing: Klipper, Moonraker, Mainsail, Fluidd, and file names such as `klippy.log` and `printer.cfg` in code font. <!-- src: README.md:6, README.md:29 -->
 - The maker credit is "Built by Hotend", with Hotend capitalised and linked. <!-- src: README.md:80 -->
-- Never "Klipper Doctor", "KlipperDoctor" or "klipper doctor". This is a guess drawn from the one consistent form above, and is listed under Unverified.
 
 ## One-liner
 
